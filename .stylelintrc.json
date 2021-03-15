@@ -1,0 +1,20 @@
+{
+    "extends": "stylelint-config-sass-guidelines",
+    "plugins": [
+      "stylelint-scss"
+    ],
+    "defaultSeverity": "warning",
+    "rules": {
+        "indentation": 4,
+        "max-nesting-depth": 3,
+        "number-leading-zero": "never",
+        "selector-class-pattern": "[a-zA-Z0-9-_]+",
+        "selector-max-compound-selectors": 5,
+        "selector-no-qualifying-type": [
+            true,
+            {
+                "ignore": ["attribute"]
+            }
+        ]
+    }
+}

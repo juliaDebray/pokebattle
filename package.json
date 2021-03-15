@@ -1,0 +1,46 @@
+{
+  "name": "poke-battle",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack serve",
+    "lint:js": "eslint ./src",
+    "lint:css": "stylelint ./src",
+    "lint": "npm run lint:css && npm run lint:js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tokayazy/poke-battle.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tokayazy/poke-battle/issues"
+  },
+  "homepage": "https://github.com/tokayazy/poke-battle#readme",
+  "devDependencies": {
+    "@babel/core": "^7.13.10",
+    "@babel/preset-env": "^7.13.10",
+    "autoprefixer": "^10.2.5",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.1.2",
+    "eslint": "^7.22.0",
+    "eslint-loader": "^4.0.2",
+    "eslint-webpack-plugin": "^2.5.2",
+    "html-loader": "^2.1.2",
+    "html-webpack-plugin": "^5.3.1",
+    "node-sass-chokidar": "^1.5.0",
+    "postcss-loader": "^5.2.0",
+    "sass-loader": "^11.0.1",
+    "style-loader": "^2.0.0",
+    "stylelint": "^13.12.0",
+    "stylelint-config-sass-guidelines": "^8.0.0",
+    "stylelint-scss": "^3.19.0",
+    "stylelint-webpack-plugin": "^2.1.1",
+    "webpack": "^5.25.1",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2"
+  }
+}
