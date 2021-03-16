@@ -13,13 +13,14 @@
     backdrop-filter: blur(4px);
     background-color: transparent;
     border: 0;
-    display: flex;
+    display: none;
     height: 100%;
     justify-content: center;
     width: 100%;
 
     &[open] {
         animation: pokemon-dialog .6s forwards;
+        display: flex;
     }
 
     &-content {
