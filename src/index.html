@@ -8,9 +8,29 @@
 </head>
 <body>
     <div id="app" class="app">
-        <button class="starter-btn"><img src="./images/bulbizarre.png" alt="bulbizarre"></button>
-        <button class="starter-btn"><img src="./images/salameche.png" alt="salameche"></button>
-        <button class="starter-btn"><img src="./images/carapuce.png" alt="carapuce"></button>
+        <button class="pokeball" data-id="1"><img src="./images/pokeball.png" alt="Pokémon n°001"></button>
+        <button class="pokeball" data-id="4"><img src="./images/pokeball.png" alt="Pokémon n°004"></button>
+        <button class="pokeball" data-id="7"><img src="./images/pokeball.png" alt="Pokémon n°007"></button>
     </div>
+    <dialog id="pokemon-modal">
+        <dl>
+            <dt>Nom</dt>
+            <dd class="pokemon-name"></dd>
+            <dt>Type</dt>
+            <dd class="pokemon-type"></dd>
+            <dt>Niveau</dt>
+            <dd class="pokemon-level"></dd>
+            <dt>Point de vie</dt>
+            <dd class="pokemon-hp"></dd>
+            <dt>Attaque</dt>
+            <dd class="pokemon-attack"></dd>
+            <dt>Défense</dt>
+            <dd class="pokemon-defense"></dd>
+            <dt>Attaque Spécial</dt>
+            <dd class="pokemon-attack-special"></dd>
+            <dt>Défense Spécial</dt>
+            <dd class="pokemon-defense-special"></dd>
+        </dl>
+    </dialog>
 </body>
 </html>

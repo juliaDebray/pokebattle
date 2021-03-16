@@ -1,0 +1,9 @@
+@import './base';
+@import './app';
+@import './pokeball';
+@import './dialog';
+
+body {
+    background-image: url('../images/background.png');
+    background-size: cover;
+}

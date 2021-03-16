@@ -18,20 +18,3 @@ body {
     justify-content: center;
     margin: 0;
 }
-
-.app {
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-}
-
-.starter-btn {
-    background-color: transparent;
-    border: 0;
-    cursor: pointer;
-    transition: transform .4s ease-in-out;
-
-    &:hover {
-        transform: scale(1.2);
-    }
-}
