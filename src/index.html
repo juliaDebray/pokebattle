@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poke Battle</title>
 </head>
+
 <body>
     <div id="app" class="app">
         <button class="pokeball" data-id="1"><img src="./images/pokeball.png" alt="Pokémon n°001"></button>
@@ -14,25 +16,43 @@
     </div>
     <dialog id="pokemon-modal" class="modal">
         <div class="modal-content">
-            <dl>
-                <dt>Nom</dt>
-                <dd id="pokemon-name" class="pokemon-name"></dd>
-                <dt>Type</dt>
-                <dd id="pokemon-type" class="pokemon-type"></dd>
-                <dt>Niveau</dt>
-                <dd id="pokemon-level" class="pokemon-level"></dd>
-                <dt>Point de vie</dt>
-                <dd id="pokemon-hp" class="pokemon-hp"></dd>
-                <dt>Attaque</dt>
-                <dd id="pokemon-attack" class="pokemon-attack"></dd>
-                <dt>Défense</dt>
-                <dd id="pokemon-defense" class="pokemon-defense"></dd>
-                <dt>Attaque Spécial</dt>
-                <dd id="pokemon-attack-special" class="pokemon-attack-special"></dd>
-                <dt>Défense Spécial</dt>
-                <dd id="pokemon-defense-special" class="pokemon-defense-special"></dd>
-            </dl>
+            <ul>
+                <li>
+                    <span>Nom:</span>
+                    <span id="pokemon-name" class="pokemon-name"></span>
+                <li>
+                    <span>Type:</span>
+                    <span id="pokemon-type" class="pokemon-type"></span>
+                </li>
+                <li>
+                    <span>Niveau:</span>
+                    <span id="pokemon-level" class="pokemon-level"></span>
+                </li>
+                <li>
+                    <span>Point de vie:</span>
+                    <span id="pokemon-hp" class="pokemon-hp"></span>
+                </li>
+                <li>
+                    <span>Attaque:</span>
+                    <span id="pokemon-attack" class="pokemon-attack"></span>
+                </li>
+                <li>
+                    <span>Défense:</span>
+                    <span id="pokemon-defense" class="pokemon-defense"></span>
+                </li>
+                <li>
+                    <span>Attaque Spécial:</span>
+                    <span id="pokemon-attack-special" class="pokemon-attack-special"></span>
+                </li>
+                <li>
+                    <span>Défense Spécial:</span>
+                    <span id="pokemon-defense-special" class="pokemon-defense-special"></span>
+                </li>
+            </ul>
+            <button type="button">Choisir ce pokemon</button>
+            <button type="reset">Annuler</button>
         </div>
     </dialog>
 </body>
+
 </html>

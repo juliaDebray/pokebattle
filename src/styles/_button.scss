@@ -1,0 +1,20 @@
+button {
+    border: 0;
+    border-radius: 3px;
+    padding: 10px;
+    transition: opacity .4s ease-in-out;
+
+    &[type='button'] {
+        background-color: #66bb6a;
+        grid-area: button1;
+    }
+
+    &[type='reset'] {
+        background-color: #ef5350;
+        grid-area: button2;
+    }
+
+    &[type]:hover {
+        opacity: .8;
+    }
+}

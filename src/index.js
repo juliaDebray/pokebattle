@@ -2,11 +2,12 @@ import './styles/index.scss';
 import Pokemon from './javascripts/Pokemon';
 
 const pkmModal = document.getElementById('pokemon-modal');
+const modelContent = document.querySelector('.modal-content');
 
 pkmModal.addEventListener('click', (event) => {
     if(event.target === event.currentTarget) {
         event.target.open = false;
-        event.target.lastElementChild.remove();
+        event.target.querySelector('img').remove();
     }
 });
 
@@ -30,7 +31,7 @@ for(const pokeball of pokeballs) {
         const image = document.createElement('img');
         const pokemonId = event.currentTarget.dataset.id;
         image.src = `./src/images/pokemon-${pokemonId}.png`;
-        pkmModal.append(image);
+        modelContent.insertBefore(image, modelContent.lastElementChild);
         pkmModal.open = true;
 
         fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`)

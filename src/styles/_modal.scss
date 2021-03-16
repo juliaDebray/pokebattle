@@ -24,10 +24,30 @@
     }
 
     &-content {
-        background-color: #fff;
-        border: 1px solid #333;
-        border-radius: 4px;
+        background-color: #d6d6d6;
+        border-radius: 3px;
+        display: grid;
+        gap: 25px;
+        grid-template: 'stat pokemon' 'button1 button2';
         padding: 1em;
+    }
 
+    ul {
+        grid-area: stat;
+        list-style: none;
+        padding: 0;
+    }
+
+    li {
+        margin-bottom: 10px;
+
+        &:first-child {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    }
+
+    img {
+        grid-area: pokemon;
     }
 }
