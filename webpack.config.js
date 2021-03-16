@@ -47,7 +47,7 @@ module.exports = {
                             presets: ['@babel/preset-env'],
                         },
                     },
-                    'eslint-loader',
+                    // 'eslint-loader',
                 ],
             },
             {
