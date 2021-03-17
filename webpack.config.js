@@ -9,11 +9,10 @@ module.exports = {
 
     mode: 'development',
 
-    entry: path.resolve(__dirname, './src/index.js'),
+    entry: ['regenerator-runtime/runtime', path.resolve(__dirname, './src/index.js')],
 
     devServer: {
         overlay: true,
-        open: true,
         hot: true,
         historyApiFallback: true,
         disableHostCheck: true,
@@ -41,12 +40,7 @@ module.exports = {
                 test: /\.jsx?$/i,
                 include: SOURCES_PATH,
                 use: [
-                    {
-                        loader: 'babel-loader',
-                        options: {
-                            presets: ['@babel/preset-env'],
-                        },
-                    },
+                    'babel-loader',
                     // 'eslint-loader',
                 ],
             },
