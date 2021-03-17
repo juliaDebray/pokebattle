@@ -20,29 +20,38 @@ const pokemonAttack = document.getElementById('pokemon-attack');
 const pokemonDefense = document.getElementById('pokemon-defense');
 const pokemonSpecialAttack = document.getElementById('pokemon-attack-special');
 const pokemonSpecialDefense = document.getElementById('pokemon-defense-special');
+const buttonChoosePokemon = document.getElementById('submit');
+const buttonResetPokemon = document.getElementById('reset');
 
 
 const pokeballs = document.getElementsByClassName('pokeball');
 
-// fonction de définition de l'ID du pokémon :
-for(const pokeball of pokeballs) {
+// Appel à PokéAPI :
+for (const pokeball of pokeballs) {
     pokeball.addEventListener('click', (event) => {
 
-        const image = document.createElement('img');
+        //Définition de l'ID du pokémon :
         const pokemonId = event.currentTarget.dataset.id;
+
+        // Ajout de l'image du pokémon dans la modale :
+        const image = document.createElement('img');
         image.src = `./src/images/pokemon-${pokemonId}.png`;
         modelContent.insertBefore(image, modelContent.lastElementChild);
+
+        // Ouverture de la modale :
         pkmModal.open = true;
 
+        // Appel API :
         fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`)
         .then((response) => {
-            if(response.ok) {
+            if (response.ok) {
                 return response.json();
             }
             else {
                 return {};
             }
         })
+        // Définition des statistiques des pokémon et injection dans la modale :
         .then((data) => {
             const pokemon = new Pokemon(data);
 
@@ -54,9 +63,27 @@ for(const pokeball of pokeballs) {
             pokemonSpecialAttack.textContent = pokemon.specialAttack;
             pokemonSpecialDefense.textContent = pokemon.specialDefense;
             pokemonType.textContent = pokemon.types.join(' / ');
+
         })
+
         .catch((error) => {
             console.error(error)
         })
+
     });
+
 }
+
+// fermeture de la modale :
+buttonResetPokemon.addEventListener('click', (event) => {
+    pkmModal.open = false;
+    event.target.parentNode.lastElementChild.previousSibling.remove();
+})
+
+// choisir le pokemon :
+buttonChoosePokemon.addEventListener('click', () => {
+    pkmModal.open = false;
+    event.target.parentNode.lastElementChild.previousSibling.remove();
+})
+
+
