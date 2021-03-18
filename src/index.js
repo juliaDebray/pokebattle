@@ -30,7 +30,7 @@ import Pokemon from './javascripts/Pokemon';
             })
             .catch((error) => {
                 console.error(error);
-            })
+            });
     };
 
     // placement des pokémons dans les pokéballs
@@ -73,7 +73,7 @@ import Pokemon from './javascripts/Pokemon';
     // fonction d'ouverture de la pokéball
     const pokemonModal = document.getElementById('pokemon-modal');
     const openPokeball = (pokemon) => {
-        pokemonModal.dataset.id = pokemon.id
+        pokemonModal.dataset.id = pokemon.id;
         pokemonModal.open = true;
     };
 
@@ -123,13 +123,16 @@ import Pokemon from './javascripts/Pokemon';
     // ferme la pokéball en choisissant un pokemon
     const buttonChoosePokemon = document.getElementById('submit');
     buttonChoosePokemon.addEventListener('click', () => {
+        // ferme la pokéball
         closePokeball();
-        body.classList.add('battle');
 
         // retourne le pokémon choisi
         const pokeballId = pokemonModal.dataset.id;
         const currentPokemon = getCurrentPokemon(pokemons, pokeballId);
-        console.log(currentPokemon);
+        pokemons.current = currentPokemon;
+
+        // lance le combat
+        battleStart();
     });
 
     // animation de début du combat
@@ -137,12 +140,55 @@ import Pokemon from './javascripts/Pokemon';
     const pokeballGroup = document.getElementById('app');
     const pokemonBattle = document.getElementById('pokemon-battle');
 
-    body.addEventListener('animationend', () => {
-        body.classList.remove('battle');
-        while (pokeballGroup.firstChild) {
-            pokeballGroup.removeChild(pokeballGroup.firstChild);
-        }
-        pokeballGroup.appendChild(pokemonBattle);
-    })
+
+
+    const battleStart = () => {
+        body.classList.add('battle');
+        body.addEventListener('animationend', () => {
+            body.classList.remove('battle');
+            while (pokeballGroup.firstChild) {
+                pokeballGroup.removeChild(pokeballGroup.firstChild);
+            }
+            pokeballGroup.appendChild(pokemonBattle);
+
+            // ajout de l'image du pokemon dans la modale
+            const pokemonImage = pokemons.current.id;
+            const battlePokemonImage = pokemonBattle.querySelector('img');
+            battlePokemonImage.src = `./src/images/pokemon-${pokemonImage}.png`;
+
+            // définission de l'adversaire
+            const getRandomPokemonPosition = (min,max) => {
+                return Math.random() * (max - min) + min;
+            };
+            const randomPokemonPosition = Math.floor(getRandomPokemonPosition(0, 4));
+            const adversaryPokemon = pokemons[randomPokemonPosition];
+
+            // points de vie de l'adversaire
+            let adversaryLifePoint = adversaryPokemon.lifePoint;
+
+            // attaque sur les points de vie de l'adversaire et affichage des données d'attaques dans l'aside
+            const powerAttack = 10;
+            const attackButton = document.querySelector('.cta-attack');
+            const battleDetails = document.getElementById('pokemon-details');
+
+            attackButton.addEventListener('click', (event) => {
+                if(adversaryLifePoint > 0) {
+                    adversaryLifePoint -= powerAttack;
+                    const battleElement = document.createElement('p');
+                    battleElement.textContent = `${pokemons.current.name} tabasse ${adversaryPokemon.name} et lui met ${powerAttack} points de dégâts dans sa face !`;
+                    battleDetails.prepend(battleElement);
+
+                    if(adversaryLifePoint < 0) {
+                        battleElement.textContent = `${adversaryPokemon.name} est dead !`;
+                        battleDetails.prepend(battleElement);
+                    }
+                }
+                else {
+                    adversaryLifePoint = 0;
+                    console.log('l\'adversaire est mort');
+                }
+            });
+        });
+    };
 
 })();
