@@ -66,7 +66,7 @@ import Pokemon from './javascripts/Pokemon';
 
         // ajout de l'image du pokemon dans la pokeball
         const pokemonImage = document.createElement('img');
-        pokemonImage.src = `./src/images/pokemon-${currentPokemon.id}.png`;
+        pokemonImage.src = `./images/pokemon-${currentPokemon.id}.png`;
         modalContent.appendChild(pokemonImage);
     };
 
@@ -154,7 +154,7 @@ import Pokemon from './javascripts/Pokemon';
             // ajout de l'image du pokemon dans la modale
             const pokemonImage = pokemons.current.id;
             const battlePokemonImage = pokemonBattle.querySelector('img');
-            battlePokemonImage.src = `./src/images/pokemon-${pokemonImage}.png`;
+            battlePokemonImage.src = `./images/pokemon-${pokemonImage}.png`;
 
             // définission de l'adversaire
             const getRandomPokemonPosition = (min, max) => {

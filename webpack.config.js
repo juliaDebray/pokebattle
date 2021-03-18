@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require("copy-webpack-plugin");
 const ESLintPlugin = require('eslint-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const webpack = require('webpack');
@@ -52,6 +53,12 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, './src/index.html'),
+        }),
+
+        new CopyPlugin({
+            patterns: [
+                { from: path.resolve(__dirname, 'src/images'), to: path.resolve(__dirname, 'dist/images') },
+            ],
         }),
 
         new ESLintPlugin(),
