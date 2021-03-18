@@ -1,5 +1,6 @@
 export default class Pokemon {
     constructor(data) {
+        this.id = data.id;
         this.name = data.name;
         this.types = data.types.map((item) => {
             return item.type.name;
