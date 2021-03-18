@@ -157,10 +157,11 @@ import Pokemon from './javascripts/Pokemon';
             battlePokemonImage.src = `./src/images/pokemon-${pokemonImage}.png`;
 
             // définission de l'adversaire
-            const getRandomPokemonPosition = (min,max) => {
-                return Math.random() * (max - min) + min;
+            const getRandomPokemonPosition = (min, max) => {
+                return Math.floor(Math.random() * (max - min) + min);
             };
-            const randomPokemonPosition = Math.floor(getRandomPokemonPosition(0, 4));
+            const randomPokemonPosition = getRandomPokemonPosition(0, pokemons.length - 1);
+
             const adversaryPokemon = pokemons[randomPokemonPosition];
 
             // points de vie de l'adversaire
@@ -171,14 +172,27 @@ import Pokemon from './javascripts/Pokemon';
             const attackButton = document.querySelector('.cta-attack');
             const battleDetails = document.getElementById('pokemon-details');
 
-            attackButton.addEventListener('click', (event) => {
-                if(adversaryLifePoint > 0) {
+            attackButton.addEventListener('click', () => {
+                // Date en cours
+                const currentDate = new Date();
+
+                // Format de la date qu'on voudra afficher
+                const dateOptions = {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                };
+
+                // Date formatté
+                const dateFormatted = new Intl.DateTimeFormat('fr-FR', dateOptions).format(currentDate);
+
+                if (adversaryLifePoint > 0) {
                     adversaryLifePoint -= powerAttack;
                     const battleElement = document.createElement('p');
-                    battleElement.textContent = `${pokemons.current.name} tabasse ${adversaryPokemon.name} et lui met ${powerAttack} points de dégâts dans sa face !`;
+                    battleElement.textContent = `${dateFormatted} - ${pokemons.current.name} tabasse ${adversaryPokemon.name} et lui met ${powerAttack} points de dégâts dans sa face !`;
                     battleDetails.prepend(battleElement);
 
-                    if(adversaryLifePoint < 0) {
+                    if (adversaryLifePoint < 0) {
                         battleElement.textContent = `${adversaryPokemon.name} est dead !`;
                         battleDetails.prepend(battleElement);
                         attackButton.disabled = true;
