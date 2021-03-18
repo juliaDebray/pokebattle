@@ -26,6 +26,7 @@
     &-content {
         background-color: #d6d6d6;
         border-radius: 3px;
+        box-shadow: 0 0 10px #333;
         display: grid;
         gap: 25px;
         grid-template: 'stat pokemon' 'button1 button2';
