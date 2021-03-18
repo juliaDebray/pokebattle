@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const webpack = require('webpack');
 
@@ -14,19 +15,14 @@ module.exports = {
     devServer: {
         overlay: true,
         hot: true,
-        historyApiFallback: true,
-        disableHostCheck: true,
-        compress: true,
     },
+
+    devtool: 'inline-source-map',
 
     output: {
         chunkFilename: '[name].[chunkhash].bundle.js',
         sourceMapFilename: '[name].map',
         path: path.resolve(__dirname, 'dist'),
-    },
-
-    resolve: {
-        extensions: ['.js', '.json'],
     },
 
     module: {
@@ -39,10 +35,7 @@ module.exports = {
             {
                 test: /\.jsx?$/i,
                 include: SOURCES_PATH,
-                use: [
-                    'babel-loader',
-                    // 'eslint-loader',
-                ],
+                use: ['babel-loader'],
             },
             {
                 test: /\.scss$/i,
@@ -60,6 +53,8 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, './src/index.html'),
         }),
+
+        new ESLintPlugin(),
 
         new StyleLintPlugin({
             configFile: path.resolve(__dirname, './.stylelintrc.json'),
