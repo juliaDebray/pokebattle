@@ -124,11 +124,25 @@ import Pokemon from './javascripts/Pokemon';
     const buttonChoosePokemon = document.getElementById('submit');
     buttonChoosePokemon.addEventListener('click', () => {
         closePokeball();
+        body.classList.add('battle');
 
         // retourne le pokémon choisi
         const pokeballId = pokemonModal.dataset.id;
         const currentPokemon = getCurrentPokemon(pokemons, pokeballId);
-        console.log('VOICI LE POKEMON QUE TU AS CHOISI:', currentPokemon);
+        console.log(currentPokemon);
     });
+
+    // animation de début du combat
+    const body = document.body;
+    const pokeballGroup = document.getElementById('app');
+    const pokemonBattle = document.getElementById('pokemon-battle');
+
+    body.addEventListener('animationend', () => {
+        body.classList.remove('battle');
+        while (pokeballGroup.firstChild) {
+            pokeballGroup.removeChild(pokeballGroup.firstChild);
+        }
+        pokeballGroup.appendChild(pokemonBattle);
+    })
 
 })();
