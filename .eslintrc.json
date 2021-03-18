@@ -12,7 +12,9 @@
     "sourceType": "module"
   },
   "rules": {
-    // "indent": ["warn", 4],
-    // "object-curly-newline": "off"
+    "semi": [
+      "warn",
+      "always"
+    ]
   }
 }
