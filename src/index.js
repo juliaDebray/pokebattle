@@ -181,11 +181,8 @@ import Pokemon from './javascripts/Pokemon';
                     if(adversaryLifePoint < 0) {
                         battleElement.textContent = `${adversaryPokemon.name} est dead !`;
                         battleDetails.prepend(battleElement);
+                        attackButton.disabled = true;
                     }
-                }
-                else {
-                    adversaryLifePoint = 0;
-                    console.log('l\'adversaire est mort');
                 }
             });
         });
