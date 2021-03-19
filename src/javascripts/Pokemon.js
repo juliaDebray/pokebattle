@@ -11,5 +11,13 @@ export default class Pokemon {
         this.defense = data.stats[2].base_stat;
         this.specialAttack = data.stats[3].base_stat;
         this.specialDefense = data.stats[4].base_stat;
+
+        this.powerAttack = 5;
+    }
+
+    pokemonAttack(adversaryPokemon) {
+        if (adversaryPokemon.lifePoint > 0) {
+            adversaryPokemon.lifePoint -= this.powerAttack;
+        }
     }
 }

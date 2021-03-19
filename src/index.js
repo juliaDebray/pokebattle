@@ -1,6 +1,17 @@
 import './styles/index.scss';
 import Pokemon from './javascripts/Pokemon';
 
+// Format de la date qu'on voudra afficher
+const formatDate = (date) => {
+    const dateOptions = {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+    };
+
+    return new Intl.DateTimeFormat('fr-FR', dateOptions).format(date);
+};
+
 (async () => {
     const pokeballs = document.getElementsByClassName('pokeball');
 
@@ -168,35 +179,27 @@ import Pokemon from './javascripts/Pokemon';
             let adversaryLifePoint = adversaryPokemon.lifePoint;
 
             // attaque sur les points de vie de l'adversaire et affichage des données d'attaques dans l'aside
-            const powerAttack = 10;
             const attackButton = document.querySelector('.cta-attack');
             const battleDetails = document.getElementById('pokemon-details');
 
             attackButton.addEventListener('click', () => {
-                // Date en cours
-                const currentDate = new Date();
-
-                // Format de la date qu'on voudra afficher
-                const dateOptions = {
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    second: '2-digit',
-                };
-
-                // Date formatté
-                const dateFormatted = new Intl.DateTimeFormat('fr-FR', dateOptions).format(currentDate);
-
                 if (adversaryLifePoint > 0) {
-                    adversaryLifePoint -= powerAttack;
+                    // Date formatté
+                    const dateFormatted = formatDate(new Date());
+
+                    // adversaryLifePoint -= powerAttack;
+                    const myPokemon = pokemons.current;
+                    myPokemon.pokemonAttack(adversaryPokemon);
                     const battleElement = document.createElement('p');
-                    battleElement.textContent = `${dateFormatted} - ${pokemons.current.name} tabasse ${adversaryPokemon.name} et lui met ${powerAttack} points de dégâts dans sa face !`;
+                    battleElement.textContent = `${dateFormatted} - ${pokemons.current.name} tabasse ${adversaryPokemon.name} et lui met ${myPokemon.powerAttack} points de dégâts dans sa face !`;
                     battleDetails.prepend(battleElement);
 
-                    if (adversaryLifePoint < 0) {
+                    if (adversaryPokemon.lifePoint <= 0) {
                         battleElement.textContent = `${adversaryPokemon.name} est dead !`;
                         battleDetails.prepend(battleElement);
                         attackButton.disabled = true;
                     }
+
                 }
             });
         });
