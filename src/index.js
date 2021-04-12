@@ -191,7 +191,7 @@ const formatDate = (date) => {
                     const myPokemon = pokemons.current;
                     myPokemon.pokemonAttack(adversaryPokemon);
                     const battleElement = document.createElement('p');
-                    battleElement.textContent = `${dateFormatted} - ${pokemons.current.name} tabasse ${adversaryPokemon.name} et lui met ${myPokemon.powerAttack} points de dégâts dans sa face !`;
+                    battleElement.textContent = `${dateFormatted} - ${pokemons.current.name} attaque ${adversaryPokemon.name} et lui fait ${myPokemon.powerAttack} points de dégâts !`;
                     battleDetails.prepend(battleElement);
 
                     if (adversaryPokemon.lifePoint <= 0) {
