@@ -1,6 +1,10 @@
 # Poke Battle
 
-C'est un projet pour mettre en application certaines notions de JavaScript.
+Projet axcé sur la manipulation des requêtes API et de JavaScript.
+Attention le projet n'est pas responsive.
+
+Le but du jeu est de choisir un pokémon puis de faire un premier combat avec.
+Le combat est encore en cours de développement : le pokémon adverse ne peut pas riposter et il n'existe qu'une seule attaque.
 
 ## Installation
 Afin de faire tourner le projet sur votre poste vous devez avoir au préalable [Nodejs](https://nodejs.org/en/) et [npm](https://www.npmjs.com/) d'installé.
