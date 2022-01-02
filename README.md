@@ -1,6 +1,6 @@
 # Poke Battle
 
-https://guarded-falls-17610.herokuapp.com/
+https://battle-poke.herokuapp.com/
 
 *Le projet n'est pas encore responsive.*
 
